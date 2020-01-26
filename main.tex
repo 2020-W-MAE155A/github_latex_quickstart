@@ -1,22 +1,40 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 \begin{document}
 
-\title{GitHub tutorial}
+\title{GitHub and LaTeX installation instructions and tutorial}
 
 \maketitle
 
-LaTeX instructions:
+Instructions for installing LaTeX and setting up a document:
 
 \begin{enumerate}
-    \item Download LaTeX: https://www.latex-project.org/get/
+    \item Download LaTeX: \url{https://www.latex-project.org/get/}. I recommend you go with \texttt{TeX Live} on Linux, \texttt{MacTeX} on macOS, and \texttt{MiKTeX} on Windows.
     \item Go to overleaf.com, make an account, and sign in.
-    \item Click on new project and select one of the templates (Academic Journal, Book, etc.).
+    \item Click on new project and select one of the templates (Academic Journal, Book, etc.). These give you a reference that you can start from in your own \texttt{tex} file.
     \item Create a directory on your computer where you want to have your LaTeX source.
-    \item You can copy and paste the source code from there into your local directory.
+    \item Create a file with the extension \texttt{.tex}, and you can write your source code for your LaTeX document there.
+    \item To compile, you can type \texttt{pdflatex [...].tex} in terminal, or you install a LaTeX extension in VS Code, and follow its instructions for compiling.
 \end{enumerate}
 
-GitHub instructions:
+Getting set up with GitHub and creating a GitHub project:
+
+\begin{enumerate}
+    \item Install \texttt{git} if you don't already have it---\url{https://windows.github.com} for Windows, \url{https://mac.github.com} for macOS, \url{http://git-scm.com} for Linux.
+    \item Make a GitHub account and log in.
+    \item Create a GitHub organization for your team.
+    \item Go to the organization page---\url{https://www.github.com/[your\_organization\_name]}---and create a project for your LaTeX source code or your aircraft modeling/design code. Note that with free GitHub accounts, you can only make public projects.
+    \item On your computer, create an empty folder if you don't already have a folder for your LaTeX or Python source code that you want to turn into a project.
+    \item In terminal, \texttt{cd} into that empty or pre-existing folder (at the top level).
+    \item From there, type \texttt{git init} to initialize an empty git repository.
+    \item Type \texttt{git add [filename]} for each file you want to add. You can also use \texttt{git add *} to automatically add all files, but git will exclude certain files based on what is in \texttt{.gitignore}. This is useful, because you don't want to include automatically generated/temporary files, such as those created when you compile a LaTeX document. Conversely, sometimes you might want to override what is in \texttt{.gitignore} and add the file anyway, which you can do using \texttt{git add -f [...]} to force git to add a file, ignoring \texttt{.gitignore}.
+    \item Type \texttt{git commit -am "a descriptive commit message"}. This `commits' your local changes (i.e., changes on your computer); in other words, it saves them.
+    \item Type something like \texttt{git remote add origin https://github.com/hwangjt/test.git} (replacing \texttt{hwangjt} and \texttt{test} with the appropriate names). This adds a \texttt{remote}, which is like a shortcut, called \texttt{origin}.
+    \item Type \texttt{git push -u origin master} to do two things. First, this is a `push', so it pushes the commits on your computer to, in this case, `origin'. Second, it sets `origin' as the default place to push to, so that in the future, you can push by simply typing \texttt{git push}.
+    \item On a different computer, you can get up with the same repository by doing the following. First, go to the home page for the repository, and click the green \texttt{Clone or download} button. Copy the link in the text field. In terminal, type \texttt{git clone https://github.com/hwangjt/test.git} from the folder in which you want the project folder to be created.
+    \item You can now go into that created folder, and make changes, commit them, pull, and push to share your work with your teammates and vise versa.
+\end{enumerate}
 
 \end{document}
